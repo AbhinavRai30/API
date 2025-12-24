@@ -44,7 +44,7 @@ API/
 
 1. **Clone the repository**
 ```bash
-cd c:\driver\API
+https://github.com/AbhinavRai30/API.git
 ```
 
 2. **Create and activate virtual environment**
