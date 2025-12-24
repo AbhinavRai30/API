@@ -1,0 +1,34 @@
+API statart with :    uvicorn main:app --reload
+
+"postgresql://postgres:pgadmin@localhost:5432/greencycles"
+
+
+PUT /table/{table_name}/{primary_key_value}
+DELETE /table/{table_name}/{primary_key_value}
+curl -X DELETE http://127.0.0.1:8000/table/actor/6
+POST /table/payment
+GET /table/actor_info
+
+
+
+| Operation    | URL                        |
+| ------------ | -------------------------- |
+| GET tables   | `/tables`                  |
+| GET rows     | `/table/{table_name}`      |
+| POST row     | `/table/{table_name}`      |
+| PUT row      | `/table/{table_name}/{id}` |
+| DELETE row   | `/table/{table_name}/{id}` |
+
+
+
+http://127.0.0.1:8000/docs#/
+
+
+
+| Action     | Command                                       |
+| ---------- | --------------------------------------------- |
+| Start      | `uvicorn main:app --reload`                   |
+| Stop       | `CTRL + C`                                    |
+| Restart    | `CTRL + C` → start command                    |
+| Debug      | `uvicorn main:app --reload --log-level debug` |
+| Production | `uvicorn main:app`                            |
