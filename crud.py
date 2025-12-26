@@ -1,6 +1,7 @@
 from sqlalchemy import text
 from fastapi import HTTPException
 
+
 # -------------------------------
 # Safety: validate table name
 # -------------------------------
@@ -29,7 +30,6 @@ def get_pk(db, table: str):
     return row[0] if row else None
 
 
-
 # -------------------------------
 # Columns safe for INSERT
 # -------------------------------
@@ -40,14 +40,6 @@ def get_insertable_columns(db, table: str):
         "WHERE table_schema = 'public' "
         "  AND table_name = :table "
         "  AND is_identity = 'NO' "
-        "  AND column_name NOT IN ( "
-        "      SELECT a.attname "
-        "      FROM pg_attribute a "
-        "      JOIN pg_attrdef d "
-        "        ON a.attrelid = d.adrelid "
-        "       AND a.attnum = d.adnum "
-        f"      WHERE a.attrelid = '{table}'::regclass "
-        "  )"
     )
     rows = db.execute(text(sql), {"table": table}).fetchall()
     return [r[0] for r in rows]
@@ -64,8 +56,7 @@ def insert_row(db, table: str, data: dict):
 
     if not payload:
         raise HTTPException(
-            status_code=400,
-            detail=f"No valid insertable columns for table '{table}'"
+            status_code=400, detail=f"No valid insertable columns for table '{table}'"
         )
 
     keys = ", ".join(payload.keys())
