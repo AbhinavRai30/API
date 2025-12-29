@@ -1,0 +1,19 @@
+services:
+  api:
+    build: .
+    image: fastapi-film-api
+    container_name: film-api
+    ports:
+      - "8000:8000"
+    environment:
+      DB_HOST: postgres15
+      DB_PORT: 5432
+      DB_NAME: greencycles
+      DB_USER: postgres
+      DB_PASSWORD: pgadmin
+    networks:
+      - api_backend
+
+networks:
+  api_backend:
+    name: api_backend

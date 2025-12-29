@@ -1,0 +1,13 @@
+robotframework
+requests
+psycopg2-binary
+openpyxl
+xmltodict
+python-dotenv
+robotframework-requests
+robotframework-databaselibrary
+robotframework-seleniumlibrary
+robotframework-excellib
+fastapi
+uvicorn[standard]
+sqlalchemy
